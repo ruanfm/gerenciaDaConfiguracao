@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 include_once '../../classes/Pessoa.class.php';
 
 $objPessoa = new Pessoa();
@@ -87,4 +88,12 @@ $objPessoa = new Pessoa();
     });
     
 </script>
+=======
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+>>>>>>> 233b9ad7af0fea4f48858c5d79511aa873e8507b
 

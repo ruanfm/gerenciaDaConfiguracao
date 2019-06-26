@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="modal fade" id="nova_pessoa" style="margin-top: 150px;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style=" border-radius: 5px;">
@@ -70,4 +71,13 @@
     </div>
 </div>
 
+=======
+<?php
+
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+>>>>>>> 233b9ad7af0fea4f48858c5d79511aa873e8507b
 

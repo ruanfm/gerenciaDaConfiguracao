@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 require_once './Pessoa.class.php';
 
 $objPessoa = new Pessoa();
@@ -43,3 +44,11 @@ else if($_POST['action'] == 'editar'){
     $retorno = ($objPessoa->atualiza($dados));
     echo json_encode($retorno);
 }
+=======
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+>>>>>>> 233b9ad7af0fea4f48858c5d79511aa873e8507b
