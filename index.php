@@ -11,13 +11,13 @@
     <body>
         <div class="navbar">
             <div class="botoes">
-                <a type="button" class="btn btn-white btn-primary btn-bold produtos" href="javascript:void(0)"><i class="menu-icon fa fa-calendar-plus"></i>
+                <a type="button" class="btn btn-white btn-primary btn-bold produtos" id="pessoa" href="javascript:void(0)"><i class="menu-icon fa fa-calendar-plus"></i>
                     <span>Clientes</span>
                 </a>
-                <a type="button" class="btn btn-white btn-primary btn-bold produtos" href="javascript:void(0)"><i class="menu-icon fa fa-calendar-plus"></i>
+                <a type="button" class="btn btn-white btn-primary btn-bold produtos" id="produtos" href="javascript:void(0)"><i class="menu-icon fa fa-calendar-plus"></i>
                     <span>Produtos</span>
                 </a>
-                <a type="button" class="btn btn-white btn-primary btn-bold produtos" href="javascript:void(0)"><i class="menu-icon fa fa-calendar-plus"></i>
+                <a type="button" class="btn btn-white btn-primary btn-bold produtos" id="pedidos" href="javascript:void(0)"><i class="menu-icon fa fa-calendar-plus"></i>
                     <span>Pedidos</span>
                 </a>
             </div>
@@ -33,10 +33,10 @@
         <script src="assets/js/bootstrap-notify.min.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-                $('.produtos').click(function () {
+                $('#produtos').click(function () {
                     $("#centerIndex").load("view/produtos/Produtos.php");
                 });
-                $('.pessoa').click(function () {
+                $('#pessoa').click(function () {
                     $("#centerIndex").load("view/pessoa/Pessoa.php");
                 });
             });
