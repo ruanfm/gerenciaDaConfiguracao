@@ -1,6 +1,5 @@
 <?php
 
-<<<<<<< HEAD
 /**
  * Description of Cliente
  *
@@ -34,15 +33,12 @@ class Pessoa {
     }
 
     public function buscaUm($dado) {
-        try {
-            $this->idPessoa = $dado;
-            $query = $this->conn->conectar()->prepare("SELECT id,nome, cpf, logradouro, numero, bairro, cidade, cep, estado FROM clientes WHERE id =" . $this->idPessoa);
-            $query->bindParam(':idPessoa', $this->idPessoa, PDO::PARAM_INT);
-            $query->execute();
-            return $query->fetch();
-        } catch (PDOException $ex) {
-            return 'Erro ao buscar a pessoa' . $ex->getMessage();
-        }
+      $this->idPessoa = $dado;
+      $query = $this->conn->conectar()->prepare("SELECT id,nome, cpf, logradouro, numero, bairro, cidade, cep, estado FROM clientes WHERE id = :idPessoa;");
+      $query->bindParam(':idPessoa', $this->idPessoa, PDO::PARAM_INT);
+      $query->execute();
+      return $query->fetch();
+       
     }
 
     public function buscaTodos() {
@@ -56,34 +52,22 @@ class Pessoa {
     }
 
     public function insere($dados) {
-      try {
-          $this->nome       = $dados['nome'];
-          $this->cpf        = $dados['cpf'];
-          $this->logradouro = $dados['logradouro'];
-          $this->numero     = $dados['numero'];
-          $this->bairro     = $dados['bairro'];
-          $this->cidade     = $dados['cidade'];
-          $this->cep        = $dados['cep'];
-          $this->estado     = $dados['estado'];
-          
-          $query = $this->conn->conectar()->prepare("INSERT INTO public.clientes(nome, cpf, logradouro, numero, bairro, cidade, cep, estado) VALUES (':nome', ':cpf', ':logradouro', ':numero', ':bairro', ':cidade', ':cep', ':estado');");
+    
+      $this->nome       = $dados[0];
+      $this->cpf        = $dados[1];
+      $this->logradouro = $dados[2];
+      $this->numero     = $dados[3];
+      $this->bairro     = $dados[4];
+      $this->cidade     = $dados[5];
+      $this->cep        = $dados[6];
+      $this->estado     = $dados[7];
 
-          $query->bindParam("nome",       $this->nome,        PDO::PARAM_STR);
-          $query->bindParam("cpf",        $this->cpf,         PDO::PARAM_STR);
-          $query->bindParam("logradouro", $this->logradouro,  PDO::PARAM_STR);
-          $query->bindParam("numero",     $this->numero,      PDO::PARAM_INT);
-          $query->bindParam("bairro",     $this->bairro,      PDO::PARAM_STR);
-          $query->bindParam("cidade",     $this->cidade,      PDO::PARAM_STR);
-          $query->bindParam("cep",        $this->cep,         PDO::PARAM_STR);
-          $query->bindParam("estado",     $this->estado,      PDO::PARAM_STR);
-
-          if ($query->execute()) {
-              return 'ok';
-          } else {
-              return 'erro';
-          }
-      } catch (PDOException $ex) {
-          return 'Erro ao inserir a pessoa' . $ex->getMessage();
+      $query = $this->conn->conectar()->prepare("INSERT INTO public.clientes(nome, cpf, logradouro, numero, bairro, cidade, cep, estado) VALUES ('".$this->nome."', '".$this-cpf."', '".$this->logradouro."', ".$this->numero.", '".$this->bairro."', '".$this->cidade."', '".$this->cep."', '".$this->estado."');");
+      
+      if ($query->execute()) {
+          return 1;
+      } else {
+          return 0;
       }
     }
 
@@ -99,42 +83,30 @@ class Pessoa {
     }
 
     public function atualiza($dados) {
-        try {
-            $this->idPessoa   = $dados['idPessoa'];
-            $this->nome       = $dados['nome'];
-            $this->cpf        = $dados['cpf'];
-            $this->logradouro = $dados['logradouro'];
-            $this->numero     = $dados['numero'];
-            $this->cidade     = $dados['cidade'];
-            $this->cep        = $dados['cep'];
-            $this->estado     = $dados['estado'];
+      
+      $this->idPessoa   = $dados[0];
+      $this->nome       = $dados[1];
+      $this->cpf        = $dados[2];
+      $this->logradouro = $dados[3];
+      $this->numero     = $dados[4];
+      $this->cidade     = $dados[5];
+      $this->cep        = $dados[6];
+      $this->estado     = $dados[7];
 
-            $query = $this->conn->conectar()->prepare("UPDATE public.clientes SET 'nome'=:nome, 'cpf'=:cpf, 'logradouro'=:logradouro, 'numero'=:numero, 'cidade'=:cidade, 'cep'=:cep, 'estado'=:estado WHERE id=:idPessoa');");
-            $query->bindParam(':idPessoa',   $this->idPessoa,   PDO::PARAM_INT);
-            $query->bindParam(':nome',       $this->nome,       PDO::PARAM_STR);
-            $query->bindParam(':cpf',        $this->cpf,        PDO::PARAM_STR);
-            $query->bindParam(':logradouro', $this->logradouro, PDO::PARAM_STR);
-            $query->bindParam(':numero',     $this->numero,     PDO::PARAM_INT);
-            $query->bindParam(':cidade',     $this->cidade,     PDO::PARAM_STR);
-            $query->bindParam(':cep',        $this->cep,        PDO::PARAM_INT);
-            $query->bindParam(':estado',     $this->estado,     PDO::PARAM_STR);
-            
-            if ($query->execute()) {
-                return 'ok';
-            } else {
-                return 'erro';
-            }
-        } catch (PDOException $ex) {
-            return 'Erro ao atualizar a pessoa' . $ex->getMessage();
-        }
+      $query = $this->conn->conectar()->prepare("UPDATE public.clientes SET nome=:nome, cpf=:cpf, logradouro=:logradouro, numero=:numero, cidade=:cidade, cep=:cep, estado=:estado WHERE id=:idPessoa);");
+      $query->bindParam(':idPessoa',   $this->idPessoa,   PDO::PARAM_INT);
+      $query->bindParam(':nome',       $this->nome,       PDO::PARAM_STR);
+      $query->bindParam(':cpf',        $this->cpf,        PDO::PARAM_STR);
+      $query->bindParam(':logradouro', $this->logradouro, PDO::PARAM_STR);
+      $query->bindParam(':numero',     $this->numero,     PDO::PARAM_INT);
+      $query->bindParam(':cidade',     $this->cidade,     PDO::PARAM_STR);
+      $query->bindParam(':cep',        $this->cep,        PDO::PARAM_INT);
+      $query->bindParam(':estado',     $this->estado,     PDO::PARAM_STR);
+
+      if ($query->execute()) {
+          return 1;
+      } else {
+          return 0;
+      }
     }
-
 }
-=======
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
->>>>>>> 233b9ad7af0fea4f48858c5d79511aa873e8507b

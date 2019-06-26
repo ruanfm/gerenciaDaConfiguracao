@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="modal fade" id="nova_pessoa" style="margin-top: 150px;" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" data-backdrop="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style=" border-radius: 5px;">
@@ -71,13 +70,38 @@
     </div>
 </div>
 
-=======
-<?php
+<script>
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
->>>>>>> 233b9ad7af0fea4f48858c5d79511aa873e8507b
+  jQuery(document).ready(function () {
+      jQuery('#form_nova_pessoa').submit(function () {
+        var dados = jQuery(this).serialize();
+        $.ajax({
+          url: 'classes/Pessoa_ajax.php',
+          method: 'POST',
+          dataType: 'json',
+          data: dados,
+          success: function (data) {
+                alert(data);
+              if (data == 1) {
+                  $("#centerIndex").load("view/pessoa/Pessoa.php");
+                  $.notify({
+                      message: 'Pessoa <strong>excluída</strong> com sucesso.',
+                      allow_dismiss: true
+                  }, {
+                      type: 'success'
+                  });
+              } else {
+                  $.notify({
+                      message: 'Erro ao <strong>excluir</strong> pessoa.',
+                      allow_dismiss: true
+                  }, {
+                      type: 'warning'
+                  });
+              }
+            }
+          });
+      });
+  });
+
+</script>
 
