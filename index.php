@@ -33,9 +33,12 @@
         <script src="assets/js/bootstrap-notify.min.js" type="text/javascript"></script>
         <script type="text/javascript">
             $(document).ready(function () {
-//                $('.produtos').click(function () {
+                $('.produtos').click(function () {
                     $("#centerIndex").load("view/produtos/Produtos.php");
-//                });
+                });
+                $('.pessoa').click(function () {
+                    $("#centerIndex").load("view/pessoa/Pessoa.php");
+                });
             });
         </script>
     </body
