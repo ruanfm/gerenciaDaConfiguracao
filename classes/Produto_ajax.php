@@ -11,7 +11,7 @@ if ($_POST['action'] == 'delete') {
     $retorno = ($objProduto->deleta($id));
     echo json_encode($retorno);
 } 
-else if ($_POST['action'] == 'incluir') {
+else if ($_POST['action'] == 'insere') {
     $dados = [$_POST['descricao'], $_POST['fabricante']];
     $retorno = ($objProduto->insere($dados));
     echo json_encode($retorno);
@@ -19,11 +19,10 @@ else if ($_POST['action'] == 'incluir') {
 else if($_POST['action'] == 'buscaIndividual'){
     $id = $_POST['id'];
     $retorno = ($objProduto->buscaUm($id));
-    $retorno = explode(',',$retorno);
     echo json_encode($retorno);
 }
 else if($_POST['action'] == 'editar'){
-    $dados = [$_POST['id'],$_POST['descricao'], $_POST['fabricante']];
+    $dados = [$_POST['id3'], $_POST['descricao3'], $_POST['fabricante3']];
     $retorno = ($objProduto->atualiza($dados));
     echo json_encode($retorno);
 }

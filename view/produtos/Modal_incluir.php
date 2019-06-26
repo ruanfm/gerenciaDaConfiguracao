@@ -6,7 +6,7 @@
                 <h4 class="modal-title text-center" style="color: white">Produtos</h4>
             </div>
             <div class="modal-body" style="background-color: rgb(240,240,254)">
-                <form method="post" id="form_novo_procedimento">
+                <form method="post" id="form_novo_produto">
                     <div class="form-row col-xs-12 col-md-12">
                         <div class="form-group col-xs-6 col-md-6">
                             <label for="descricao" style="color: #ff3333">Descrição</label>
@@ -24,12 +24,44 @@
                         </div>
                     </div>
                     <input type="hidden" name="action" id="action" value="insere"/>
-                    
+
                     <button type="submit" style="margin-left: 24px; margin-top: 5px;  border-radius: 5px;" class="btn btn-white btn-sm btn-primary btn-bold inserir_produto" name="inserir_produto" id="inserir_produto">Incluir</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script>
 
+  jQuery(document).ready(function () {
+      jQuery('#form_novo_produto').submit(function () {
+          var dados = jQuery(this).serialize();
+          $.ajax({
+              url: 'classes/Produto_ajax.php',
+              method: 'POST',
+              dataType: 'json',
+              data: dados,
+              success: function (data) {
+                  if (data == 1) {
+                      $("#centerIndex").load("view/produtos/Produtos.php");
+                      $.notify({
+                          message: 'Produto <strong>excluído</strong> com sucesso.',
+                          allow_dismiss: true,
+                      }, {
+                          type: 'success'
+                      });
+                  } else {
+                      $.notify({
+                          message: 'Erro ao <strong>excluir</strong> produto.',
+                          allow_dismiss: true,
+                      }, {
+                          type: 'warning'
+                      });
+                  }
+              }
+          });
+      });
+  });
+
+</script>
 

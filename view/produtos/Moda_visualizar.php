@@ -7,17 +7,17 @@
             <div class="modal-body" style="background-color: rgb(240,240,254)">
                 <div class="form-row col-xs-12 col-md-12">
                     <div class="form-group col-xs-6 col-md-6">
-                        <label for="descricao">Descri��o</label>
+                        <label for="descricao">Descrição</label>
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-adn"></span></span>
-                            <input type="text" readonly name="descricao2" id="descricao2" class="form-control" value=""/>
+                            <input type="text" name="descricao2" id="descricao2" class="form-control" value=""/>
                         </div>
                     </div>
                     <div class="form-group col-xs-6 col-md-6">
                         <label for="fabricante">Fabricante</label>
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-reddit-alien"></span></span>
-                            <input type="text" readonly name="fabricante2" id="fabricante2" class="form-control" value=""/>
+                            <input type="text" name="fabricante2" id="fabricante2" class="form-control" value=""/>
                         </div>
                     </div>
                 </div>
